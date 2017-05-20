@@ -1,0 +1,3 @@
+export const UPDATE_CACHE = 'UPDATE_CACHE';
+export const SET_CURRENT_DAY = 'SET_CURRENT_DAY';
+export const SET_AUDIO_SOURCE = 'SET_AUDIO_SOURCE';
