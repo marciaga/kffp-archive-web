@@ -6,6 +6,7 @@ const { defaultHandlerWrapper } = require('./next-wrapper');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const server = new Hapi.Server();
+const port = process.env.PORT || 3000;
 
 const pluginOptions = [
     {
@@ -23,7 +24,7 @@ const pluginOptions = [
 
 app.prepare()
 .then(() => {
-    server.connection({ port: 3000 });
+    server.connection({ port });
     server.register(pluginOptions)
     .then(() => {
         server.route({
