@@ -1,0 +1,20 @@
+branch-defaults:
+  develop:
+    environment: kffp-archive-web
+
+global:
+  application_name: kffp-archive-web
+  branch: null
+  default_ec2_keyname: KFFP_DEPLOY
+  default_platform: Node.js
+  default_region: us-west-2
+  instance_profile: kffp-archive-web
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: git
+  workspace_type: Application
+
+deploy:
+  artifact: kffparchiveweb.zip
