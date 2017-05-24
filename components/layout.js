@@ -10,6 +10,9 @@ const Layout = (props) => (
             <link rel="stylesheet" href='https://unpkg.com/react-md/dist/react-md.indigo-pink.min.css' />
             <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' />
             <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Material+Icons' />
+            <link rel="icon" href="https://s3-us-west-2.amazonaws.com/freeformpdx-images/icons/cropped-record-favicon-1.png" sizes="32x32" />
+            <link rel="icon" href="https://s3-us-west-2.amazonaws.com/freeformpdx-images/icons/cropped-record-favicon-1.png" sizes="192x192" />
+            <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/freeformpdx-images/icons/cropped-record-favicon-1.png" />
         </Head>
         <Header />
         {props.children}
