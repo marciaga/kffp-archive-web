@@ -45,7 +45,7 @@ const ArchiveList = (props) => {
     const { fileNames, date } = currentDay;
 
     return (
-        <div className="md-grid">
+        <div className="md-grid archive-container">
             <List className="md-cell md-cell--12 md-paper md-paper--1">
                 <div className="center">
                     <DatePicker
@@ -60,6 +60,9 @@ const ArchiveList = (props) => {
                 </div>
             </List>
             <style jsx>{`
+                .archive-container {
+                    margin-bottom: 50px;
+                }
                 .center {
                     text-align: center;
                 }
