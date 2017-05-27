@@ -1,7 +1,6 @@
 import ReactAudioPlayer from 'react-audio-player';
 
 const styles = {
-    position: 'fixed',
     bottom: 0,
     width: '100%',
     backgroundColor: 'white'
