@@ -3,9 +3,31 @@ import moment from 'moment';
 import List from 'react-md/lib/Lists/List';
 import ListItem from 'react-md/lib/Lists/ListItem';
 import DatePicker from 'react-md/lib/Pickers/DatePickerContainer';
+import TooltipFontIcon from './tooltip-icon';
 import { getFileNames, setAudioSource } from '../actions';
 
-const formatHour = num => moment().hour(num).format('h:00 A');
+const formatHour = num => (
+    <div>
+        <span className='display-time'>
+            {moment().hour(num).format('h:00 A')}
+        </span>
+        {CopyIcon}
+        <style jsx>{`
+            .display-time {
+                font-size: 1.3em;
+            }
+        `}</style>
+    </div>
+);
+
+const CopyIcon = (
+    <TooltipFontIcon
+        tooltipLabel='Copy Link to Clipboard'
+        tooltipPosition='right'
+    >
+        content_copy
+    </TooltipFontIcon>
+);
 
 const renderList = (items, dispatch) => {
     if (!items) {
