@@ -3,7 +3,7 @@ import moment from 'moment';
 import List from 'react-md/lib/Lists/List';
 import ListItem from 'react-md/lib/Lists/ListItem';
 import DatePicker from 'react-md/lib/Pickers/DatePickerContainer';
-import TooltipFontIcon from './tooltip-icon';
+import CopyButton from './copy-button';
 import { getFileNames, setAudioSource } from '../actions';
 
 const formatHour = num => (
@@ -11,7 +11,6 @@ const formatHour = num => (
         <span className='display-time'>
             {moment().hour(num).format('h:00 A')}
         </span>
-        {CopyIcon}
         <style jsx>{`
             .display-time {
                 font-size: 1.3em;
@@ -20,19 +19,28 @@ const formatHour = num => (
     </div>
 );
 
-const CopyIcon = (
-    <TooltipFontIcon
-        tooltipLabel='Copy Link to Clipboard'
-        tooltipPosition='right'
-    >
-        content_copy
-    </TooltipFontIcon>
-);
+
+const renderCopyButtons = (items) => {
+    if (!items) {
+        return (
+            <span></span>
+        );
+    }
+
+    return items.map((item, i) => {
+        return (
+            <CopyButton
+                key={i}
+                text={item.url}
+            />
+        )
+    })
+}
 
 const renderList = (items, dispatch) => {
     if (!items) {
         return (
-            <h3>Nothing to show right now.</h3>
+            <h3>Nothing to show.</h3>
         );
     }
 
@@ -67,28 +75,41 @@ const ArchiveList = (props) => {
     const { fileNames, date } = currentDay;
 
     return (
-        <div className="md-grid archive-container">
-            <List className="md-cell md-cell--12 md-paper md-paper--1">
-                <div className="center">
-                    <DatePicker
-                        id="date-picker"
-                        label="Select a date"
-                        className="md-cell"
-                        style={{margin: '0 auto'}}
-                        onChange={handleChange}
-                    />
-                    <h2>{formatDate(date)}</h2>
-                    {renderList(fileNames, dispatch)}
+        <div className="md-grid">
+            <div className="md-cell md-cell--12 archive-container md-paper md-paper--1">
+                <DatePicker
+                    id="date-picker"
+                    label="Select a date"
+                    className="md-cell"
+                    style={{ margin: '0 auto 15px' }}
+                    onChange={handleChange}
+                />
+                <h2 className="center">{formatDate(date)}</h2>
+                <div
+                    className="md-grid md-grid--no-spacing"
+                    style={{ justifyContent: 'center' }}
+                >
+
+                <List className="md-cell md-cell--5-offset md-cell--2">
+                    <div className="center">
+                        {renderList(fileNames, dispatch)}
+                    </div>
+                </List>
+                <List className="md-cell md-cell--1">
+                    {renderCopyButtons(fileNames)}
+
+                </List>
                 </div>
-            </List>
-            <style jsx>{`
-                .archive-container {
-                    margin-bottom: 50px;
-                }
-                .center {
-                    text-align: center;
-                }
-            `}</style>
+                <style jsx>{`
+                    .archive-container {
+                        margin-bottom: 50px;
+
+                    }
+                    .center {
+                        text-align: center;
+                    }
+                `}</style>
+            </div>
         </div>
     );
 };
