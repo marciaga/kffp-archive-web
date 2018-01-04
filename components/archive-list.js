@@ -37,8 +37,8 @@ const renderCopyButtons = (items) => {
     })
 }
 
-const renderList = (items, dispatch) => {
-    if (!items) {
+const renderList = (items = [], dispatch) => {
+    if (!items.length) {
         return (
             <h3>Nothing to show.</h3>
         );

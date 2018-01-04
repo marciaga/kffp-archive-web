@@ -37,6 +37,12 @@ const transformDate = (dateString) => {
     return date.format('YYYY/MM/DD');
 };
 
+const isValidResponse = (ary) => {
+    const validStorageTypes = ary.filter(o => o.StorageClass !== 'GLACIER');
+
+    return validStorageTypes.length > 0;
+};
+
 const getFileNamesFromS3 = async (date) => {
     try {
         const prefix = `${date}/`;
@@ -44,6 +50,11 @@ const getFileNamesFromS3 = async (date) => {
             Prefix: prefix,
             Delimiter: '/'
         }).promise();
+
+        if (!isValidResponse(Contents)) {
+            return [];
+        }
+
         const result = extractKeys(Contents);
 
         return transformFileNames(result);
