@@ -2,7 +2,7 @@
   "name": "kffp-archive-web",
   "version": "0.1.0",
   "engines": {
-    "node": "6.9.1"
+    "node": "12.18.1"
   },
   "dependencies": {
     "aws-sdk": "^2.51.0",
@@ -26,7 +26,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "./node_modules/.bin/next start -p 3000",
     "test": "echo \"Error: no test specified\" && exit 0"
   }
 }
