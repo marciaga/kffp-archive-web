@@ -102,7 +102,7 @@ const ArchiveList = (props) => {
                 </div>
                 <style jsx>{`
                     .archive-container {
-                        margin-bottom: 50px;
+                        margin-bottom: 86px;
 
                     }
                     .center {
