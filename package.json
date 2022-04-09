@@ -10,7 +10,7 @@
     "good": "^7.2.0",
     "good-console": "^6.4.0",
     "hapi": "^16.1.1",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "next": "^2.3.1",
     "next-redux-wrapper": "^1.1.2",
     "prop-types": "^15.5.10",
